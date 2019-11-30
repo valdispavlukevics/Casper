@@ -27,62 +27,22 @@ into the {body} of the default.hbs template --}}
 
                 <h1 class="post-full-title">{{title}}</h1>
 
+                <div class="post-full-byline">
+                    <section class="post-full-byline-content">
+                        <section class="post-full-byline-meta">
+                            <div class="byline-meta-content">
+                                <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
+                            </div>
+                        </section>
+                    </section>
+                </div>
+
                 {{#if custom_excerpt}}
                 <p class="post-full-custom-excerpt">{{custom_excerpt}}</p>
                 {{/if}}
 
-                <div class="post-full-byline">
-
-                    <section class="post-full-byline-content">
-
-                        <ul class="author-list">
-                            {{#foreach authors}}
-                            <li class="author-list-item">
-
-                                <div class="author-card">
-                                    {{#if profile_image}}
-                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                                    {{else}}
-                                    <div class="author-profile-image">{{> "icons/avatar"}}</div>
-                                    {{/if}}
-                                    <div class="author-info">
-                                        {{#if bio}}
-                                        <div class="bio">
-                                            <h2>{{name}}</h2>
-                                            <p>{{bio}}</p>
-                                            <p><a href="{{url}}">More posts</a> by {{name}}.</p>
-                                        </div>
-                                        {{else}}
-                                        <h2>{{name}}</h2>
-                                        <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                                        {{/if}}
-                                    </div>
-                                </div>
-
-                                {{#if profile_image}}
-                                <a href="{{url}}" class="author-avatar">
-                                    <img class="author-profile-image" src="{{img_url profile_image size="xs"}}" alt="{{name}}" />
-                                </a>
-                                {{else}}
-                                <a href="{{url}}" class="author-avatar author-profile-image">{{> "icons/avatar"}}</a>
-                                {{/if}}
-
-                            </li>
-                            {{/foreach}}
-                        </ul>
-
-                        <section class="post-full-byline-meta">
-                            <h4 class="author-name">{{authors}}</h4>
-                            <div class="byline-meta-content">
-                                <time class="byline-meta-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time>
-                                <span class="byline-reading-time"><span class="bull">&bull;</span> {{reading_time}}</span>
-                            </div>
-                        </section>
-
-                    </section>
-
-
-                </div>
+                
             </header>
 
             {{#if feature_image}}
@@ -124,54 +84,6 @@ into the {body} of the default.hbs template --}}
 
     </div>
 </main>
-
-{{!-- Links to Previous/Next posts --}}
-<aside class="read-next outer">
-    <div class="inner">
-        <div class="read-next-feed">
-            {{#if primary_tag}}
-            {{#get "posts" filter="tags:{{primary_tag.slug}}+id:-{{id}}" limit="3" as |related_posts|}}
-                {{#if related_posts}}
-                <article class="read-next-card">
-                    <header class="read-next-card-header">
-                        {{#../primary_tag}}
-                        <h3><span>More in</span> <a href="{{url}}">{{name}}</a></h3>
-                        {{/../primary_tag}}
-                    </header>
-                    <div class="read-next-card-content">
-                        <ul>
-                            {{#foreach related_posts}}
-                            <li>
-                                <h4><a href="{{url}}">{{title}}</a></h4>
-                                <div class="read-next-card-meta">
-                                    <p><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> –
-                                        {{reading_time}}</p>
-                                </div>
-                            </li>
-                            {{/foreach}}
-                        </ul>
-                    </div>
-                    <footer class="read-next-card-footer">
-                        <a href="{{#../primary_tag}}{{url}}{{/../primary_tag}}">{{plural meta.pagination.total empty='No posts' singular='% post' plural='See all % posts'}}
-                            →</a>
-                    </footer>
-                </article>
-                {{/if}}
-            {{/get}}
-            {{/if}}
-
-            {{!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs --}}
-            {{#next_post}}
-                {{> "post-card"}}
-            {{/next_post}}
-
-            {{!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs --}}
-            {{#prev_post}}
-                {{> "post-card"}}
-            {{/prev_post}}
-        </div>
-    </div>
-</aside>
 
 {{/post}}
 
