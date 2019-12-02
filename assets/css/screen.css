@@ -894,7 +894,7 @@ make sure this only happens on large viewports / desktop-ish devices.
 .post-full-header {
     position: relative;
     margin: 0 auto;
-    padding: 70px 0px 50px;
+    padding: 35px 0px 35px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 }
@@ -918,20 +918,20 @@ make sure this only happens on large viewports / desktop-ish devices.
 
 @media (max-width: 1170px) {
     .post-full-header {
-        padding: 60px 11vw 50px;
+        padding: 25px 0 25px;
     }
 }
 
 @media (max-width: 800px) {
     .post-full-header {
-        padding-right: 5vw;
-        padding-left: 5vw;
+        padding-right: 0;
+        padding-left: 0;
     }
 }
 
 @media (max-width: 500px) {
     .post-full-header {
-        padding: 20px 0 35px;
+        padding: 10px 0 10px;
     }
 }
 
