@@ -28,7 +28,14 @@
         {{!-- The footer at the very bottom of the screen --}}
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+                <section class="copyright">
+                    Copyright &copy; {{date format="YYYY"}} <a href="{{@site.url}}">{{@site.title}}</a> a blog by <a href="mailto:craftbakery.dev@outlook.com">Valdis Pavlukevics</a><br />
+                    All Rights Reserved, except for the parts enumerated below:
+                    <ul>
+					   <li>The source code of this blog is covered by <a href="https://opensource.org/licenses/MIT">MIT License</a>.</li>
+					   <li>This page content, excluding the visual design and the logotype, is covered by <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a>.</li>
+				    </ul>
+                </section>
                 <nav class="site-footer-nav">
                     {{#if @site.facebook}}<a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a>{{/if}}
                     {{#if @site.twitter}}<a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a>{{/if}}
